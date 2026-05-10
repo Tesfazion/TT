@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Not Found" noindex>
+  <div class="surface rounded-3xl p-8">
+    <h1 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Page not found</h1>
+    <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+      The page you’re looking for doesn’t exist. Try the homepage or browse case studies.
+    </p>
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="/"
+        class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
+      >
+        Go home
+      </a>
+      <a
+        href="/case-studies"
+        class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100"
+      >
+        Browse case studies
+      </a>
+    </div>
+  </div>
+</Layout>

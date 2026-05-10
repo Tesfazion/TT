@@ -1,0 +1,195 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../config/site";
+import Icon from "../components/Icon.astro";
+
+const email = site.contact.companyEmail?.trim();
+const personalEmail = site.contact.personalEmail?.trim();
+const whatsappNumber = site.contact.whatsappE164.replace("+", "");
+---
+
+<Layout title="Contact" description="Work with me: advisory, delivery, speaking, and leadership engagements.">
+  <section class="surface relative overflow-hidden rounded-3xl p-8">
+    <img
+      src="/images/library/iot/b66694e550998d6ef5a9c6cb6ca22c74.jpg"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-cover opacity-20"
+    />
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(99,102,241,0.20),transparent_60%)]"></div>
+    <div class="relative flex flex-col gap-2">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">Contact</h1>
+      <p class="max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        Business inquiries and partnerships — reach Sunshine Tech solution using the channels below.
+      </p>
+    </div>
+  </section>
+
+  <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
+    <div class="lg:col-span-5">
+      <div class="surface rounded-3xl p-6">
+        <div class="text-sm font-semibold text-slate-900 dark:text-white">Direct</div>
+        <div class="mt-3 space-y-2 text-sm">
+          {
+            email ? (
+              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${email}`}>
+                <Icon name="mail" class="h-4 w-4" />
+                <span>{email}</span>
+              </a>
+            ) : null
+          }
+          {
+            personalEmail ? (
+              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${personalEmail}`}>
+                <Icon name="mail" class="h-4 w-4" />
+                <span>Personal: {personalEmail}</span>
+              </a>
+            ) : null
+          }
+          <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`tel:${site.contact.phoneE164}`}>
+            <Icon name="phone" class="h-4 w-4" />
+            <span>{site.contact.phoneDisplay}</span>
+          </a>
+          <a
+            class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200"
+            href={`https://wa.me/${whatsappNumber}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name="whatsapp" class="h-4 w-4" />
+            <span>WhatsApp: {site.contact.whatsappDisplay}</span>
+          </a>
+          <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={site.links.telegram} target="_blank" rel="noreferrer">
+            <Icon name="telegram" class="h-4 w-4" />
+            <span>Telegram: @Zizo1616</span>
+          </a>
+        </div>
+        <div class="mt-6 text-xs text-slate-500 dark:text-slate-400">
+          Typical response time: 24–48 hours (weekdays).
+        </div>
+      </div>
+
+      <div class="surface mt-6 rounded-3xl p-6">
+        <div class="text-sm font-semibold text-slate-900 dark:text-white">Online</div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <Icon name="linkedin" />
+          </a>
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <Icon name="github" />
+          </a>
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+            <Icon name="instagram" />
+          </a>
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+            <Icon name="facebook" />
+          </a>
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.x} target="_blank" rel="noreferrer" aria-label="X">
+            <Icon name="x" />
+          </a>
+          <a class="surface focus-ring inline-flex items-center justify-center rounded-xl px-3 py-2 text-slate-800 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-white/10" href={site.links.telegram} target="_blank" rel="noreferrer" aria-label="Telegram">
+            <Icon name="telegram" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      {
+        email ? (
+          <form
+            data-contact-form
+            data-to={email}
+            class="surface relative overflow-hidden rounded-3xl p-6"
+          >
+            <img
+              src="/images/tech/hex.svg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="pointer-events-none absolute inset-0 h-full w-full opacity-25"
+            />
+            <div class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-500/10 blur-2xl"></div>
+            <div class="pointer-events-none absolute -bottom-12 -left-10 h-48 w-48 rounded-full bg-emerald-400/10 blur-2xl"></div>
+            <div class="relative">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Name
+                <input
+                  name="name"
+                  required
+                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
+                  placeholder="Your name"
+                />
+              </label>
+              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Email
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
+                  placeholder="you@company.com"
+                />
+              </label>
+              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 sm:col-span-2">
+                Company (optional)
+                <input
+                  name="company"
+                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
+                  placeholder="Company / org"
+                />
+              </label>
+              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 sm:col-span-2">
+                Message
+                <textarea
+                  name="message"
+                  required
+                  rows="6"
+                  class="focus-ring resize-y rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
+                  placeholder="What are you building? What outcomes do you need? Timeline? Constraints?"
+                ></textarea>
+              </label>
+            </div>
+
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button class="focus-ring inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700">
+                Send message
+              </button>
+            </div>
+            </div>
+          </form>
+        ) : (
+          <div class="rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-glow">
+            <h2 class="text-2xl font-semibold tracking-tight text-white">Fastest way to reach me</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Use WhatsApp or Telegram for a quick response. If you prefer email, add it in{" "}
+              <code class="font-mono text-xs text-slate-200">src/config/site.ts</code>.
+            </p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <a
+                href={`https://wa.me/${whatsappNumber}`}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
+              >
+                <Icon name="whatsapp" class="h-4 w-4" />
+                WhatsApp
+              </a>
+              <a
+                href={site.links.telegram}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
+              >
+                <Icon name="telegram" class="h-4 w-4" />
+                Telegram
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Layout>
