@@ -1,6 +1,6 @@
-# Sunshine Tech solution — Portfolio
+# Tesfatseyon Merkineh — Portfolio
 
-Modern, fast, static portfolio website built with Astro + Tailwind CSS.
+Modern, fast, static personal portfolio (plus company page) built with Astro + Tailwind CSS.
 
 ## Quick start
 

@@ -29,7 +29,7 @@ const caseStudies = (await getCollection("case-studies")).sort(
     {caseStudies.map((c) => (
       <a
         href={`/case-studies/${c.id}`}
-        class="surface group relative overflow-hidden rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+        class="surface group relative overflow-hidden rounded-3xl p-6 card-hover"
       >
         <img
           src="/images/tech/wave.svg"

@@ -2,15 +2,19 @@ export type NavItem = { label: string; href: string };
 export type Testimonial = { quote: string; name: string; title: string };
 
 export const site = {
-  brand: {
-    companyName: "Sunshine Tech solution",
+  person: {
     name: "Tesfatseyon Merkineh",
-    role: "Owner & CEO",
-    headline: "I build reliable products — and help teams deliver faster.",
+    role: "Founder and CEO",
+    headline: "I build modern websites and full-stack apps.",
     subheadline:
-      "I help organizations turn ideas into secure, scalable systems and modern digital experiences.",
-    location: "Addis Abeba, Ethiopia",
-    availability: "Open to consulting • Advisory • Speaking"
+      "From landing pages to dashboards: I design, develop, and ship fast, responsive, and reliable web experiences.",
+    location: "Addis Ababa, Ethiopia",
+    availability: "Open to freelance • Full-time • Speaking"
+  },
+  company: {
+    name: "Ethio-Sunshine Tech Solution",
+    navLabel: "Ethio-sunshine",
+    tagline: "Client work, consulting, and delivery — under one studio."
   },
   contact: {
     companyEmail: "sunshinetechsolution4@gmail.com",
@@ -35,16 +39,18 @@ export const site = {
   },
   nav: [
     { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
     { label: "Projects", href: "/projects" },
+    { label: "Company", href: "/company" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "Insights", href: "/insights" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   seo: {
     siteUrl: "https://tesfazion.github.io",
-    title: "Sunshine Tech solution — Portfolio",
+    title: "Tesfatseyon Merkineh — Portfolio",
     description:
-      "Portfolio for Sunshine Tech solution: modern web, automation, and secure systems — delivered with CEO-level clarity."
+      "Personal portfolio of Tesfatseyon Merkineh — full-stack developer building modern web experiences and reliable systems."
   },
   analytics: {
     plausibleDomain: ""
@@ -52,32 +58,32 @@ export const site = {
   services: [
     {
       icon: "product",
-      title: "Product & Delivery",
+      title: "Web Development",
       description:
-        "From strategy to shipped MVPs: discovery, roadmaps, execution, and measurable outcomes.",
-      bullets: ["Product discovery", "Roadmaps & OKRs", "MVP to scale-up delivery"]
+        "Fast, responsive websites and web apps with clean UI, solid foundations, and performance in mind.",
+      bullets: ["Landing pages & portfolios", "Web apps & dashboards", "Performance & accessibility"]
     },
     {
       icon: "leadership",
-      title: "Engineering Leadership",
+      title: "UI/UX + Frontend",
       description:
-        "Build high-performing teams and systems: architecture, hiring, standards, and developer velocity.",
-      bullets: ["Architecture reviews", "Team building", "Engineering standards"]
+        "Modern, user-friendly interfaces built with a strong focus on clarity, layout, and mobile-first design.",
+      bullets: ["Responsive design", "Design systems", "Animations & micro-interactions"]
     },
     {
       icon: "solutions",
-      title: "Tech Solutions",
+      title: "Automation & Integration",
       description:
-        "Modern web apps, APIs, automations, and integrations focused on reliability and speed.",
-      bullets: ["Full-stack builds", "Integrations", "Performance & security"]
+        "Automations, integrations, and APIs to save time and connect tools cleanly.",
+      bullets: ["API integrations", "Workflow automations", "Security basics"]
     }
   ],
   highlights: [
-    { label: "Years leading teams", value: "8+" },
-    { label: "Products shipped", value: "25+" },
-    { label: "Avg. delivery speed-up", value: "2–4×" },
-    { label: "Uptime targets met", value: "99.9%" }
+    { label: "Focus", value: "Full-stack" },
+    { label: "Strength", value: "UI + APIs" },
+    { label: "Timezone", value: "EAT (UTC+3)" },
+    { label: "Mode", value: "Remote / On-site" }
   ],
-  trust: ["Startups", "SMBs", "Enterprises", "Public sector"],
+  trust: ["Startups", "Small businesses", "Teams", "Individuals"],
   testimonials: [] as Testimonial[]
 } as const;

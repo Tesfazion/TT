@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { site } from "../../config/site";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt)
 );
 ---
 
-<Layout title="Projects" description="Projects built by Sunshine Tech solution — products, automations, and templates.">
+<Layout title="Projects" description={`Projects by ${site.person.name} — selected builds, experiments, and client work.`}>
   <section class="surface relative overflow-hidden rounded-3xl p-8">
     <img
       src="/images/library/software-dev/b4073ae822c46bc169e18a42f49bba08.jpg"
@@ -20,7 +21,7 @@ const projects = (await getCollection("projects")).sort(
     <div class="relative flex flex-col gap-2">
       <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">Projects</h1>
       <p class="max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-        Selected builds across product, automation, and business systems — optimized for speed, reliability, and clarity.
+        Selected builds across websites, web apps, and automations — optimized for speed, clarity, and real-world use.
       </p>
     </div>
   </section>
@@ -29,7 +30,7 @@ const projects = (await getCollection("projects")).sort(
     {projects.map((p) => (
       <a
         href={`/projects/${p.id}`}
-        class="surface group relative overflow-hidden rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+        class="surface group relative overflow-hidden rounded-3xl p-6 card-hover"
       >
         <img
           src="/images/tech/hex.svg"

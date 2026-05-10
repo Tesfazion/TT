@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
 import { site } from "../config/site";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 
 export type Props = {
@@ -13,7 +13,7 @@ export type Props = {
 
 const { title, description, noindex } = Astro.props;
 
-const pageTitle = title ? `${title} — ${site.brand.companyName}` : site.seo.title;
+const pageTitle = title ? `${title} — ${site.person.name}` : site.seo.title;
 const pageDescription = description ?? site.seo.description;
 
 const baseUrl = import.meta.env.SITE || site.seo.siteUrl;
@@ -30,18 +30,25 @@ const plausibleDomain = site.analytics?.plausibleDomain?.trim();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <meta name="author" content={site.brand.name} />
+    <meta name="author" content={site.person.name} />
     <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:site_name" content={site.brand.companyName} />
+    <meta property="og:site_name" content={site.person.name} />
     <meta property="og:image" content={ogImage} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0b0f1a" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -68,10 +75,14 @@ const plausibleDomain = site.analytics?.plausibleDomain?.trim();
         JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: site.brand.name,
-          jobTitle: site.brand.role,
+          name: site.person.name,
+          jobTitle: site.person.role,
           url: baseUrl,
-          ...(site.contact.companyEmail?.trim() ? { email: site.contact.companyEmail.trim() } : {}),
+          ...(site.contact.personalEmail?.trim()
+            ? { email: site.contact.personalEmail.trim() }
+            : site.contact.companyEmail?.trim()
+              ? { email: site.contact.companyEmail.trim() }
+              : {}),
           sameAs: [
             site.links.linkedin,
             site.links.github,
@@ -92,7 +103,7 @@ const plausibleDomain = site.analytics?.plausibleDomain?.trim();
 
     <ClientRouter />
   </head>
-  <body class="min-h-dvh text-slate-900 antialiased dark:text-slate-100">
+  <body class="min-h-dvh font-sans text-slate-900 antialiased dark:text-slate-100">
     <a
       href="#main"
       class="focus-ring sr-only fixed left-4 top-4 z-50 rounded-lg bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus:not-sr-only dark:bg-slate-950 dark:text-slate-100"
@@ -103,29 +114,11 @@ const plausibleDomain = site.analytics?.plausibleDomain?.trim();
     <Header />
 
     <main id="main" class="mx-auto w-full max-w-6xl px-4 pb-20 pt-24 sm:px-6 lg:px-8">
-      <div class="surface mb-10 flex flex-col gap-3 rounded-3xl p-5 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex items-center gap-3">
-          <img
-            src={site.assets.headshot}
-            alt={`${site.brand.name} photo`}
-            class="h-10 w-10 rounded-2xl border border-slate-200/70 bg-white/70 object-cover shadow-sm dark:border-white/10 dark:bg-white/5"
-            loading="lazy"
-            decoding="async"
-          />
-          <div>
-            <div class="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">{site.brand.name}</div>
-            <div class="text-xs font-semibold text-slate-600 dark:text-slate-300">{site.brand.role}</div>
-          </div>
-        </div>
-        <div class="text-xs text-slate-500 dark:text-slate-400">
-          {site.brand.companyName} • {site.brand.location}
-        </div>
-      </div>
       <slot />
     </main>
 
     <Footer />
 
-    <script src="../scripts/ui.ts"></script>
+    <script src="../scripts/ui/index.ts"></script>
   </body>
 </html>

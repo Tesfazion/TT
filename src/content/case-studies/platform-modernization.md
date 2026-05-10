@@ -3,7 +3,7 @@ title: "Platform Modernization for a Multi-Tenant SaaS"
 summary: "Stabilized legacy services, reduced incidents, and accelerated feature delivery through a staged modernization plan."
 publishedAt: "2026-04-01"
 industry: "B2B SaaS"
-role: "Owner/CEO • Technical Lead"
+role: "Founder/CEO • Technical Lead"
 tech: ["Astro", "Tailwind CSS", "TypeScript", "PostgreSQL", "CI/CD"]
 metrics:
   - "Incidents reduced by 60%"
@@ -25,4 +25,3 @@ The product had outgrown its early architecture. Delivery slowed, reliability de
 ## Outcome
 
 We improved reliability and throughput while keeping the business moving, enabling new features without regressing stability.
-

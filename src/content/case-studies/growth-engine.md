@@ -3,7 +3,7 @@ title: "Building a Growth Engine: CRM + Automation"
 summary: "Designed an internal growth platform that unified lead capture, scoring, and follow-up with measurable improvements."
 publishedAt: "2026-02-10"
 industry: "Services"
-role: "Owner/CEO • Product & Engineering"
+role: "Founder/CEO • Product & Engineering"
 tech: ["TypeScript", "APIs", "Workflow automation"]
 metrics:
   - "Lead response time reduced from hours to minutes"
@@ -24,4 +24,3 @@ Leads were scattered across tools, response times varied, and there was no singl
 ## Outcome
 
 Teams regained visibility into pipeline health and focused on higher-quality opportunities with faster response times.
-

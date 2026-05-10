@@ -1,6 +1,6 @@
 ---
-title: "Sunshine Tech solution — Portfolio Website"
-summary: "A fast, SEO-first portfolio and company presence built with Astro and Tailwind, optimized for executives and clients."
+title: "Ethio-Sunshine Tech Solution — Portfolio Website"
+summary: "A fast, SEO-first personal portfolio plus company presence built with Astro and Tailwind."
 publishedAt: "2026-05-10"
 category: "Brand"
 stack: ["Astro", "Tailwind CSS", "TypeScript"]

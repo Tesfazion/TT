@@ -26,41 +26,49 @@ const projects = (await getCollection("projects"))
         class="surface inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200"
       >
         <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-        {site.brand.availability}
+        {site.person.availability}
       </div>
 
       <h1 class="animate-fade-in-up mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-        {site.brand.headline}
+        Hi, I’m{" "}
+        <span class="animate-gradient bg-gradient-to-r from-brand-600 via-brand-400 to-emerald-400 bg-clip-text text-transparent">
+          {site.person.name}
+        </span>
+        <span class="block">{site.person.headline}</span>
       </h1>
       <p class="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
-        {site.brand.subheadline}
+        {site.person.subheadline}
       </p>
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a
-          href="/case-studies"
+          href="/projects"
           class="animate-shimmer inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
         >
-          View case studies
+          View projects
         </a>
         <a
           href="/contact"
           class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
         >
-          Work with me
+          Contact me
         </a>
       </div>
 
-      <div class="mt-8 flex items-center gap-3">
-        <img
-          src={site.assets.logo}
-          alt={`${site.brand.companyName} logo`}
-          class="h-12 w-auto rounded-2xl bg-white/50 p-3 shadow-sm backdrop-blur dark:bg-white/5"
-          loading="eager"
-        />
-        <div class="text-xs font-semibold uppercase tracking-widest text-slate-600 dark:text-slate-300">
-          {site.brand.companyName}
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <div class="surface inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
+          <img
+            src={site.assets.logoMark}
+            alt=""
+            class="h-4 w-4 object-contain opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span>Founder & CEO • {site.company.navLabel}</span>
         </div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/company">
+          About the company →
+        </a>
       </div>
 
       <dl class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -91,14 +99,14 @@ const projects = (await getCollection("projects"))
           <div class="flex items-center gap-4">
             <img
               src={site.assets.headshot}
-              alt={`${site.brand.name} headshot`}
+              alt={`${site.person.name} headshot`}
               class="h-16 w-16 rounded-2xl border border-white/10 bg-slate-950/60 object-cover"
               loading="eager"
             />
             <div>
-              <div class="text-sm font-semibold text-white">{site.brand.name}</div>
-              <div class="mt-1 text-sm text-slate-300">{site.brand.role}</div>
-              <div class="mt-1 text-xs text-slate-400">{site.brand.location}</div>
+              <div class="text-sm font-semibold text-white">{site.person.name}</div>
+              <div class="mt-1 text-sm text-slate-300">{site.person.role}</div>
+              <div class="mt-1 text-xs text-slate-400">{site.person.location}</div>
             </div>
           </div>
 
@@ -127,6 +135,78 @@ const projects = (await getCollection("projects"))
               </span>
             ))}
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="surface rounded-3xl p-6">
+        <div class="flex items-center gap-4">
+          <img
+            src={site.assets.headshot}
+            alt={`${site.person.name} photo`}
+            class="h-14 w-14 rounded-2xl border border-slate-200/70 bg-white/70 object-cover shadow-sm dark:border-white/10 dark:bg-white/5"
+            loading="eager"
+            decoding="async"
+          />
+          <div>
+            <h2 class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">About me</h2>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              {site.person.role} • {site.person.location}
+            </p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          I enjoy building modern, fast interfaces and practical systems. I care about clean design, accessibility, and maintainable code.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/about"
+            class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
+          >
+            Read my story
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
+          >
+            Let’s talk
+          </a>
+        </div>
+      </div>
+
+      <div class="surface rounded-3xl p-6">
+        <div class="flex items-center gap-4">
+          <img
+            src={site.assets.logo}
+            alt={`${site.company.name} logo`}
+            class="h-14 w-auto rounded-2xl bg-white/50 p-3 shadow-sm backdrop-blur dark:bg-white/5"
+            loading="eager"
+            decoding="async"
+          />
+          <div>
+            <h2 class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">{site.company.name}</h2>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">{site.company.tagline}</p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          This is where I handle client work. If you’re a business or a team, start here and check the case studies.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/company"
+            class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
+          >
+            Company page
+          </a>
+          <a
+            href="/case-studies"
+            class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
+          >
+            View case studies
+          </a>
         </div>
       </div>
     </div>
@@ -210,7 +290,7 @@ const projects = (await getCollection("projects"))
       {projects.map((p) => (
         <a
           href={`/projects/${p.id}`}
-          class="surface group relative overflow-hidden rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+          class="surface group relative overflow-hidden rounded-3xl p-6 card-hover"
         >
           {p.data.image ? (
             <>
@@ -265,7 +345,7 @@ const projects = (await getCollection("projects"))
       {caseStudies.map((c) => (
         <a
           href={`/case-studies/${c.id}`}
-          class="surface group rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+          class="surface group rounded-3xl p-6 card-hover"
         >
           <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
             <span class="surface rounded-full px-3 py-1">
@@ -306,7 +386,7 @@ const projects = (await getCollection("projects"))
       {insights.map((p) => (
         <a
           href={`/insights/${p.id}`}
-          class="surface group rounded-3xl p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+          class="surface group rounded-3xl p-6 card-hover"
         >
           <div class="text-xs font-semibold text-slate-600 dark:text-slate-300">
             {new Date(p.data.publishedAt).toLocaleDateString()}

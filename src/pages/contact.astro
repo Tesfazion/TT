@@ -1,14 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { site } from "../config/site";
-import Icon from "../components/Icon.astro";
+import Icon from "../components/ui/Icon.astro";
 
-const email = site.contact.companyEmail?.trim();
+const companyEmail = site.contact.companyEmail?.trim();
 const personalEmail = site.contact.personalEmail?.trim();
+const primaryEmail = personalEmail || companyEmail;
 const whatsappNumber = site.contact.whatsappE164.replace("+", "");
 ---
 
-<Layout title="Contact" description="Work with me: advisory, delivery, speaking, and leadership engagements.">
+<Layout title="Contact" description="Contact me for freelance work, jobs, or collaboration.">
   <section class="surface relative overflow-hidden rounded-3xl p-8">
     <img
       src="/images/library/iot/b66694e550998d6ef5a9c6cb6ca22c74.jpg"
@@ -21,7 +22,7 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
     <div class="relative flex flex-col gap-2">
       <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">Contact</h1>
       <p class="max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        Business inquiries and partnerships — reach Sunshine Tech solution using the channels below.
+        Want to hire me, collaborate, or ask a question? Here are the best ways to reach me. For studio/client work, you can also use the company email.
       </p>
     </div>
   </section>
@@ -32,10 +33,10 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
         <div class="text-sm font-semibold text-slate-900 dark:text-white">Direct</div>
         <div class="mt-3 space-y-2 text-sm">
           {
-            email ? (
-              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${email}`}>
+            companyEmail ? (
+              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${companyEmail}`}>
                 <Icon name="mail" class="h-4 w-4" />
-                <span>{email}</span>
+                <span>Studio: {companyEmail}</span>
               </a>
             ) : null
           }
@@ -97,10 +98,10 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
 
     <div class="lg:col-span-7">
       {
-        email ? (
+        primaryEmail ? (
           <form
             data-contact-form
-            data-to={email}
+            data-to={primaryEmail}
             class="surface relative overflow-hidden rounded-3xl p-6"
           >
             <img
