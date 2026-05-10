@@ -4,10 +4,18 @@ export type Testimonial = { quote: string; name: string; title: string };
 export const site = {
   person: {
     name: "Tesfatseyon Merkineh",
-    role: "Founder and CEO",
+    role: "Founder & CEO",
     headline: "I build modern websites and full-stack apps.",
     subheadline:
-      "From landing pages to dashboards: I design, develop, and ship fast, responsive, and reliable web experiences.",
+      "Software development end-to-end: modern UI, full-stack apps, dashboards, APIs, and automations — with clear delivery and founder-level ownership.",
+    skills: [
+      "Software development",
+      "Full-stack apps",
+      "Dashboards",
+      "UI/UX design",
+      "API development",
+      "Automation & integrations"
+    ],
     location: "Addis Ababa, Ethiopia",
     availability: "Open to freelance • Full-time • Speaking"
   },

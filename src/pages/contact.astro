@@ -31,43 +31,97 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
     <div class="lg:col-span-5">
       <div class="surface rounded-3xl p-6">
         <div class="text-sm font-semibold text-slate-900 dark:text-white">Direct</div>
-        <div class="mt-3 space-y-2 text-sm">
+        <div class="mt-4 grid gap-2">
           {
             companyEmail ? (
-              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${companyEmail}`}>
-                <Icon name="mail" class="h-4 w-4" />
-                <span>Studio: {companyEmail}</span>
+              <a
+                class="surface focus-ring flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 dark:text-slate-100 dark:hover:bg-slate-900/40"
+                href={`mailto:${companyEmail}`}
+              >
+                <span class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-white/5 dark:text-brand-200">
+                    <Icon name="mail" class="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Studio email</span>
+                    <span class="block">{companyEmail}</span>
+                  </span>
+                </span>
+                <Icon name="arrow" class="h-4 w-4 text-slate-500 dark:text-slate-400" />
               </a>
             ) : null
           }
           {
             personalEmail ? (
-              <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${personalEmail}`}>
-                <Icon name="mail" class="h-4 w-4" />
-                <span>Personal: {personalEmail}</span>
+              <a
+                class="surface focus-ring flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 dark:text-slate-100 dark:hover:bg-slate-900/40"
+                href={`mailto:${personalEmail}`}
+              >
+                <span class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-white/5 dark:text-emerald-200">
+                    <Icon name="mail" class="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Personal email</span>
+                    <span class="block">{personalEmail}</span>
+                  </span>
+                </span>
+                <Icon name="arrow" class="h-4 w-4 text-slate-500 dark:text-slate-400" />
               </a>
             ) : null
           }
-          <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`tel:${site.contact.phoneE164}`}>
-            <Icon name="phone" class="h-4 w-4" />
-            <span>{site.contact.phoneDisplay}</span>
+          <a
+            class="surface focus-ring flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 dark:text-slate-100 dark:hover:bg-slate-900/40"
+            href={`tel:${site.contact.phoneE164}`}
+          >
+            <span class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-white/5 dark:text-indigo-200">
+                <Icon name="phone" class="h-5 w-5" />
+              </span>
+              <span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Phone</span>
+                <span class="block">{site.contact.phoneDisplay}</span>
+              </span>
+            </span>
+            <Icon name="arrow" class="h-4 w-4 text-slate-500 dark:text-slate-400" />
           </a>
           <a
-            class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200"
+            class="surface focus-ring flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 dark:text-slate-100 dark:hover:bg-slate-900/40"
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="whatsapp" class="h-4 w-4" />
-            <span>WhatsApp: {site.contact.whatsappDisplay}</span>
+            <span class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-white/5 dark:text-emerald-200">
+                <Icon name="whatsapp" class="h-5 w-5" />
+              </span>
+              <span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">WhatsApp</span>
+                <span class="block">{site.contact.whatsappDisplay}</span>
+              </span>
+            </span>
+            <Icon name="arrow" class="h-4 w-4 text-slate-500 dark:text-slate-400" />
           </a>
-          <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={site.links.telegram} target="_blank" rel="noreferrer">
-            <Icon name="telegram" class="h-4 w-4" />
-            <span>Telegram: @Zizo1616</span>
+          <a
+            class="surface focus-ring flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 dark:text-slate-100 dark:hover:bg-slate-900/40"
+            href={site.links.telegram}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-50 text-sky-700 dark:bg-white/5 dark:text-sky-200">
+                <Icon name="telegram" class="h-5 w-5" />
+              </span>
+              <span>
+                <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Telegram</span>
+                <span class="block">@Zizo1616</span>
+              </span>
+            </span>
+            <Icon name="arrow" class="h-4 w-4 text-slate-500 dark:text-slate-400" />
           </a>
         </div>
         <div class="mt-6 text-xs text-slate-500 dark:text-slate-400">
-          Typical response time: 24–48 hours (weekdays).
+          Typical response time: 24-48 hours (weekdays).
         </div>
       </div>
 

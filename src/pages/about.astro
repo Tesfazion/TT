@@ -39,44 +39,78 @@ import { site } from "../config/site";
 
   <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
     <div class="lg:col-span-6">
-      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">About</h1>
-      <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        I'm {site.person.name}, the {site.person.role} of {site.company.name}. I build modern websites and full-stack web apps,
-        and I work with clients to turn ideas into clean, fast products people actually enjoy using.
-      </p>
-      <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        I care about strong UI/UX, performance, and reliable systems, but I also care about the business side: clear scope,
-        communication, and shipping on time. If you need a partner who can lead a project and still write the code, I'm a great fit.
-      </p>
+      <div class="surface relative overflow-hidden rounded-3xl p-6">
+        <img
+          src="/images/tech/hex.svg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          class="pointer-events-none absolute inset-0 h-full w-full opacity-30"
+        />
+        <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-500/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-12 -left-10 h-56 w-56 rounded-full bg-emerald-400/10 blur-3xl"></div>
 
-      <div class="surface mt-6 rounded-3xl p-6">
-        <div class="text-sm font-semibold text-slate-900 dark:text-white">Focus areas</div>
-        <ul class="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            Company leadership: client communication, scoping, and delivery
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            UI/UX: responsive design, layout systems, and polished interactions
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            Full-stack apps, APIs, and dashboards
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            Automation, integrations, and practical tooling
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            Performance, accessibility, and practical security basics
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-            Clean, maintainable code and good collaboration
-          </li>
-        </ul>
+        <div class="relative">
+          <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">About</h1>
+          <div class="mt-3 max-w-prose space-y-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            <p>
+              I'm {site.person.name}, the {site.person.role} of {site.company.name}. I build modern websites and full-stack web apps,
+              and I work with clients to turn ideas into clean, fast products people actually enjoy using.
+            </p>
+            <p>
+              I care about UI/UX, performance, and reliable systems, but I also care about the business side: clear scope,
+              communication, and shipping on time.
+            </p>
+          </div>
+
+          <dl class="mt-6 grid gap-4 sm:grid-cols-3">
+            <div class="surface rounded-2xl p-4">
+              <dt class="text-xs font-semibold text-slate-600 dark:text-slate-300">Role</dt>
+              <dd class="mt-1 text-sm font-semibold text-slate-900 dark:text-white">{site.person.role}</dd>
+            </div>
+            <div class="surface rounded-2xl p-4">
+              <dt class="text-xs font-semibold text-slate-600 dark:text-slate-300">Location</dt>
+              <dd class="mt-1 text-sm font-semibold text-slate-900 dark:text-white">{site.person.location}</dd>
+            </div>
+            <div class="surface rounded-2xl p-4">
+              <dt class="text-xs font-semibold text-slate-600 dark:text-slate-300">Availability</dt>
+              <dd class="mt-1 text-sm font-semibold text-slate-900 dark:text-white">{site.person.availability}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <div class="flex items-end justify-between gap-6">
+          <div class="text-sm font-semibold text-slate-900 dark:text-white">Focus areas</div>
+          <div class="text-xs font-semibold text-slate-500 dark:text-slate-400">What I do best</div>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div class="surface rounded-3xl p-5 card-hover">
+            <div class="text-sm font-semibold text-slate-900 dark:text-white">Leadership</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Client communication, scoping, timelines, and delivery you can trust.
+            </p>
+          </div>
+          <div class="surface rounded-3xl p-5 card-hover">
+            <div class="text-sm font-semibold text-slate-900 dark:text-white">UI/UX</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Responsive design, layout systems, and polished micro-interactions.
+            </p>
+          </div>
+          <div class="surface rounded-3xl p-5 card-hover">
+            <div class="text-sm font-semibold text-slate-900 dark:text-white">Full-stack</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Web apps, APIs, dashboards, and maintainable architecture.
+            </p>
+          </div>
+          <div class="surface rounded-3xl p-5 card-hover">
+            <div class="text-sm font-semibold text-slate-900 dark:text-white">Automation</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Integrations, workflows, and practical tooling to save time.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -113,7 +147,7 @@ import { site } from "../config/site";
         <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/70 p-5">
           <div class="text-sm font-semibold text-white">Want to work together?</div>
           <p class="mt-2 text-sm text-slate-300">
-            Send a message with your idea and timeline. I’ll reply with questions and next steps.
+            Send a message with your idea and timeline. I'll reply with questions and next steps.
           </p>
           <a
             href="/contact"

@@ -9,9 +9,11 @@ export type Props = {
   title?: string;
   description?: string;
   noindex?: boolean;
+  containerClass?: string;
 };
 
-const { title, description, noindex } = Astro.props;
+const { title, description, noindex, containerClass: containerClassProp } = Astro.props;
+const containerClass = containerClassProp ?? "max-w-6xl";
 
 const pageTitle = title ? `${title} — ${site.person.name}` : site.seo.title;
 const pageDescription = description ?? site.seo.description;
@@ -113,7 +115,10 @@ const plausibleDomain = site.analytics?.plausibleDomain?.trim();
 
     <Header />
 
-    <main id="main" class="mx-auto w-full max-w-6xl px-4 pb-20 pt-24 sm:px-6 lg:px-8">
+    <main
+      id="main"
+      class:list={["mx-auto w-full px-4 pb-20 pt-24 sm:px-6 lg:px-8", containerClass]}
+    >
       <slot />
     </main>
 

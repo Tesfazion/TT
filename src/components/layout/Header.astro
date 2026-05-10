@@ -7,7 +7,7 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
 ---
 
 <header class="fixed inset-x-0 top-0 z-40 border-b border-slate-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-white/10 dark:bg-slate-950/70">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
     <a
       href="/"
       class="focus-ring group inline-flex items-center gap-3 rounded-2xl px-2 py-1 text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-900/40"
@@ -15,7 +15,7 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
       <img
         src={site.assets.logo}
         alt={`${site.company.name} logo`}
-        class="h-12 w-12 rounded-2xl border border-slate-200/70 bg-white/70 object-contain p-2 shadow-sm sm:h-14 sm:w-14 dark:border-white/10 dark:bg-white/5"
+        class="h-16 w-16 rounded-2xl border border-slate-200/70 bg-white/80 object-contain p-1 shadow-sm sm:h-20 sm:w-20 dark:border-white/10 dark:bg-white/5"
         loading="eager"
         decoding="async"
       />
