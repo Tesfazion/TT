@@ -1,8 +1,12 @@
 type Theme = "light" | "dark";
 
 function getStoredTheme(): Theme | null {
-  const stored = localStorage.getItem("theme");
-  return stored === "light" || stored === "dark" ? stored : null;
+  try {
+    const stored = localStorage.getItem("theme");
+    return stored === "light" || stored === "dark" ? stored : null;
+  } catch {
+    return null;
+  }
 }
 
 function getPreferredTheme(): Theme {
@@ -20,7 +24,9 @@ function getTheme(): Theme {
 }
 
 function setTheme(theme: Theme) {
-  localStorage.setItem("theme", theme);
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {}
   applyTheme(theme);
   updateThemeToggleLabels();
 }
@@ -38,42 +44,6 @@ function updateThemeToggleLabels() {
   }
 }
 
-function toggleMobileMenu(button: HTMLButtonElement) {
-  const targetId = button.getAttribute("aria-controls");
-  if (!targetId) return;
-
-  const target = document.getElementById(targetId);
-  if (!target) return;
-
-  const open = button.getAttribute("aria-expanded") === "true";
-  button.setAttribute("aria-expanded", open ? "false" : "true");
-  target.toggleAttribute("hidden", open);
-}
-
-function handleContactFormSubmit(form: HTMLFormElement) {
-  const data = new FormData(form);
-  const name = String(data.get("name") ?? "").trim();
-  const email = String(data.get("email") ?? "").trim();
-  const company = String(data.get("company") ?? "").trim();
-  const message = String(data.get("message") ?? "").trim();
-
-  const to = String(form.dataset.to ?? "").trim();
-  if (!to) return;
-
-  const subject = encodeURIComponent(`Portfolio inquiry${company ? ` — ${company}` : ""}`);
-  const body = encodeURIComponent(
-    [
-      `Name: ${name || "-"}`,
-      `Email: ${email || "-"}`,
-      `Company: ${company || "-"}`,
-      "",
-      message || "-"
-    ].join("\n")
-  );
-
-  window.location.href = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
-}
-
 function initOnce() {
   applyTheme(getTheme());
   updateThemeToggleLabels();
@@ -86,32 +56,7 @@ function initOnce() {
     if (themeToggle) {
       event.preventDefault();
       setTheme(getTheme() === "dark" ? "light" : "dark");
-      return;
     }
-
-    const menuToggle = target.closest?.("[data-menu-toggle]") as HTMLButtonElement | null;
-    if (menuToggle) {
-      event.preventDefault();
-      toggleMobileMenu(menuToggle);
-    }
-  });
-
-  document.addEventListener("submit", (event) => {
-    const target = event.target as Element | null;
-    if (!target) return;
-    const form = (target.closest?.("[data-contact-form]") ?? null) as HTMLFormElement | null;
-    if (!form) return;
-    event.preventDefault();
-    handleContactFormSubmit(form);
-  });
-
-  document.addEventListener("astro:after-swap", () => {
-    applyTheme(getTheme());
-    updateThemeToggleLabels();
-  });
-
-  document.addEventListener("astro:page-load", () => {
-    updateThemeToggleLabels();
   });
 }
 

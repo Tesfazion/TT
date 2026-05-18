@@ -76,6 +76,14 @@ html.dark {
   color-scheme: dark;
 }
 
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
 :where(section, h1, h2, h3, h4, h5, h6)[id] {
   scroll-margin-top: 6rem;
 }

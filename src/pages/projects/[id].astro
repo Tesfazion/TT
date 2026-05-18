@@ -14,6 +14,7 @@ if (!id) throw new Error("Missing project id");
 const entry = await getEntry("projects", id);
 if (!entry) return Astro.redirect("/404");
 
+const hasBody = Boolean(entry.body?.trim());
 const { Content } = await render(entry);
 ---
 
@@ -114,10 +115,24 @@ const { Content } = await render(entry);
   <div class="mt-10 grid gap-6 lg:grid-cols-12">
     <article class="lg:col-span-8">
       <div class="surface rounded-3xl p-6">
-        <div class="prose prose-slate prose-brand max-w-none dark:prose-invert">
-          <Content />
-        </div>
+        <div class="text-sm font-semibold text-slate-900 dark:text-white">Highlights</div>
+        <ul class="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+          {entry.data.highlights.map((h) => (
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      {hasBody ? (
+        <div class="surface mt-6 rounded-3xl p-6">
+          <div class="prose prose-slate max-w-none dark:prose-invert prose-brand">
+            <Content />
+          </div>
+        </div>
+      ) : null}
     </article>
 
     <aside class="lg:col-span-4">
@@ -141,9 +156,9 @@ const { Content } = await render(entry);
         </dl>
 
         <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/70 p-5">
-          <div class="text-sm font-semibold text-white">Want a similar build?</div>
+          <div class="text-sm font-semibold text-white">Have a project in mind?</div>
           <p class="mt-2 text-sm text-slate-300">
-            Share your goals and timeline — I’ll reply with a plan and next steps.
+            Tell me what you’re trying to build and your timeline. I’ll reply with the next step.
           </p>
           <a
             href="/contact"

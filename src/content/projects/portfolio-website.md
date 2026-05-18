@@ -1,15 +1,29 @@
 ---
-title: "Ethio-Sunshine Tech Solution — Portfolio Website"
-summary: "A fast, SEO-first personal portfolio plus company presence built with Astro and Tailwind."
+title: "Tesfatseyon Merkineh — Portfolio Website"
+summary: "My personal portfolio site — simple, fast, and easy to update."
 publishedAt: "2026-05-10"
 category: "Brand"
 stack: ["Astro", "Tailwind CSS", "TypeScript"]
 image: "/images/library/software-dev/b31c608108475fea6cd7e49e3a2dd46e.jpg"
 featured: true
+highlights:
+  - "Static-first for speed and low hosting cost"
+  - "Projects content collection"
+  - "Dark/light mode and accessibility basics"
 ---
 
-## Highlights
+## Why I built it
 
-- Static-first for speed, security, and low hosting cost
-- Content collections for projects, case studies, and insights
-- Dark/light mode with polished UI and accessibility basics
+I wanted one place to share my projects, my contact info, and what I’m learning — without needing a backend.
+Astro was a great fit because it stays fast and simple.
+
+## What I’m proud of
+
+- Clean layout + responsive design
+- Content collections for projects (easy to update)
+- Dark/light mode with a small amount of JavaScript
+
+## Next improvements
+
+- Add real screenshots for each project
+- Write longer project notes (what went wrong, what I fixed, what I’d do differently)

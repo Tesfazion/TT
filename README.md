@@ -25,10 +25,8 @@ npm.cmd run preview
 
 ## Edit content (no code)
 
-- `src/config/site.ts` (name, emails, phones, links, SEO, services)
+- `src/config/site.ts` (name, age, education, emails, phones, links, SEO, services)
 - `src/content/projects/*` (Markdown)
-- `src/content/case-studies/*` (Markdown)
-- `src/content/insights/*` (Markdown)
 - `public/brand/*` (logo + photo)
 
 ## Domain (SEO + sitemap)

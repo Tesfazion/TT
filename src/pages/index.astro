@@ -3,20 +3,19 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { site } from "../config/site";
 
-const caseStudies = (await getCollection("case-studies"))
-  .sort((a, b) => +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt))
-  .filter((c) => c.data.featured)
-  .slice(0, 2);
-
-const insights = (await getCollection("insights"))
-  .sort((a, b) => +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt))
-  .filter((p) => p.data.featured)
-  .slice(0, 2);
-
 const projects = (await getCollection("projects"))
   .sort((a, b) => +new Date(b.data.publishedAt) - +new Date(a.data.publishedAt))
   .filter((p) => p.data.featured)
-  .slice(0, 3);
+  .slice(0, 6);
+
+const gallery = [
+  "/images/library/web-designing/1bef907a0a1af5edfffd7e027c487082.jpg",
+  "/images/library/software-dev/6a1cf8409865403dbe6ea823e974400d.jpg",
+  "/images/library/iot/0ff80ff403ccbaec02653cb72775eefa.jpg",
+  "/images/library/it-infrastructure/48347ff86b2cbb0cba16a5090012373f.jpg",
+  "/images/library/cyber-security/9ad3fb14fec1877b220d02187e4e8494.jpg",
+  "/images/library/cyber-security/b234332a95eb0a31dd1eda6a7e6693b2.jpg"
+] as const;
 ---
 
 <Layout>
@@ -30,12 +29,11 @@ const projects = (await getCollection("projects"))
       </div>
 
       <h1 class="animate-fade-in-up mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-        Hi, I'm{" "}
         <span class="animate-gradient bg-gradient-to-r from-brand-600 via-brand-400 to-emerald-400 bg-clip-text text-transparent">
           {site.person.name}
         </span>
         <span class="mt-3 block text-pretty text-lg font-semibold tracking-normal text-slate-700 dark:text-slate-200 sm:text-xl">
-          {site.person.role} • {site.company.name}
+          {site.person.role} • {site.person.affiliation} • {site.person.location}
         </span>
         <span class="mt-2 block">{site.person.headline}</span>
       </h1>
@@ -64,22 +62,6 @@ const projects = (await getCollection("projects"))
         </a>
       </div>
 
-      <div class="mt-8 flex flex-wrap items-center gap-3">
-        <div class="surface inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
-          <img
-            src={site.assets.logoMark}
-            alt=""
-            class="h-4 w-4 object-contain opacity-80"
-          loading="lazy"
-          decoding="async"
-        />
-          <span>{site.person.role} • {site.company.navLabel}</span>
-        </div>
-        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/company">
-          About the company →
-        </a>
-      </div>
-
       <dl class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {site.highlights.map((h) => (
           <div
@@ -93,190 +75,128 @@ const projects = (await getCollection("projects"))
     </div>
 
     <div class="lg:col-span-5">
-      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 shadow-glow">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,158,11,0.26),transparent_55%)]"></div>
-        <img
-          src="/images/library/software-dev/b31c608108475fea6cd7e49e3a2dd46e.jpg"
-          alt=""
-          class="absolute inset-0 h-full w-full object-cover opacity-30"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="animate-float absolute -right-10 -top-10 h-40 w-40 rounded-full bg-emerald-400/10 blur-2xl"></div>
-        <div class="animate-float absolute -bottom-12 -left-10 h-56 w-56 rounded-full bg-sky-400/10 blur-2xl"></div>
-        <div class="relative p-6">
-          <div class="flex items-center gap-4">
-            <img
-              src={site.assets.headshot}
-              alt={`${site.person.name} headshot`}
-              class="h-16 w-16 rounded-2xl border border-white/10 bg-slate-950/60 object-cover"
-              loading="eager"
-            />
-            <div>
-              <div class="text-sm font-semibold text-white">{site.person.name}</div>
-              <div class="mt-1 text-sm text-slate-300">{site.person.role}</div>
-              <div class="mt-1 text-xs text-slate-400">{site.person.location}</div>
+      <div class="relative pb-10 md:pb-14">
+        <div class="relative isolate aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-glow">
+          <img
+            src={site.assets.headshot}
+            alt={`${site.person.name} photo`}
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            src="/images/library/software-dev/b31c608108475fea6cd7e49e3a2dd46e.jpg"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover opacity-18 mix-blend-overlay"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/35 to-slate-950/10"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,158,11,0.26),transparent_55%)]"></div>
+          <div class="animate-float absolute -right-10 -top-10 h-40 w-40 rounded-full bg-emerald-400/12 blur-2xl"></div>
+          <div class="animate-float absolute -bottom-12 -left-10 h-56 w-56 rounded-full bg-sky-400/12 blur-2xl"></div>
+
+          <div class="relative flex h-full flex-col p-6">
+            <div class="inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur">
+              <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+              Profile
+            </div>
+
+            <div class="mt-auto">
+              <div class="text-2xl font-semibold text-white">{site.person.name}</div>
+              <div class="mt-1 text-sm font-semibold text-slate-200">
+                {site.person.role} • {site.person.affiliation}
+              </div>
+              <div class="mt-1 text-xs font-semibold text-slate-300/90">{site.person.location}</div>
+
+              <div class="mt-5">
+                <div class="text-xs font-semibold text-slate-200/90">Work with</div>
+                <div class="mt-2 text-sm font-semibold text-slate-100/95">
+                  {site.trust.map((t, i) => (
+                    <>
+                      <span>{t}</span>
+                      {i < site.trust.length - 1 ? <span class="mx-2 text-slate-300/80">•</span> : null}
+                    </>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="mt-6 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-            <div class="text-xs font-semibold text-slate-300">I help with</div>
-            <ul class="mt-3 space-y-2 text-sm text-slate-200">
-              <li class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
-                Product strategy, discovery, and outcome-focused roadmaps
-              </li>
-              <li class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
-                Architecture reviews, modernization, and delivery systems
-              </li>
-              <li class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
-                Executive-level communication and stakeholder alignment
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-6 flex flex-wrap gap-2">
-            {site.trust.map((t) => (
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200">
-                {t}
-              </span>
-            ))}
-          </div>
         </div>
+
+        <aside class="mt-6 md:absolute md:-bottom-8 md:left-6 md:right-6">
+          <div class="relative overflow-hidden rounded-[28px] p-[1px] shadow-sm md:shadow-glow">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-500/45 via-sky-500/25 to-emerald-400/35"></div>
+            <div class="relative rounded-[27px] bg-white/78 p-5 backdrop-blur-xl dark:bg-slate-950/45">
+              <div class="flex items-center justify-between gap-4">
+                <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">I help with</div>
+                <div class="text-xs font-semibold text-slate-500 dark:text-slate-400">Web • UI • Learning</div>
+              </div>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700 marker:text-brand-600 dark:text-slate-200 dark:marker:text-brand-400">
+                <li>Fast, responsive landing pages & portfolios (Astro + Tailwind)</li>
+                <li>Small Node.js APIs for learning and prototypes</li>
+                <li>Clean UI, accessibility basics, and performance</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <section class="mt-16">
-    <div class="grid gap-4 md:grid-cols-2">
-      <div class="surface rounded-3xl p-6">
-        <div class="flex items-center gap-4">
-          <img
-            src={site.assets.headshot}
-            alt={`${site.person.name} photo`}
-            class="h-14 w-14 rounded-2xl border border-slate-200/70 bg-white/70 object-cover shadow-sm dark:border-white/10 dark:bg-white/5"
-            loading="eager"
-            decoding="async"
-          />
-          <div>
-            <h2 class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">About me</h2>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              {site.person.role} • {site.person.location}
-            </p>
-          </div>
+  <section class="mt-16 grid gap-4 md:grid-cols-3">
+    <div class="surface rounded-3xl p-6">
+      <div class="text-sm font-semibold text-slate-900 dark:text-white">Quick info</div>
+      <dl class="mt-4 grid gap-3 text-sm">
+        <div class="flex items-center justify-between gap-4">
+          <dt class="text-slate-600 dark:text-slate-300">Age</dt>
+          <dd class="font-semibold text-slate-900 dark:text-white">{site.person.age}</dd>
         </div>
-        <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-          I enjoy building modern, fast interfaces and practical systems. I care about clean design, accessibility, and maintainable code.
-        </p>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="/about"
-            class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
-          >
-            Read my story
-          </a>
-          <a
-            href="/contact"
-            class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
-          >
-            Let’s talk
-          </a>
+        <div class="flex items-center justify-between gap-4">
+          <dt class="text-slate-600 dark:text-slate-300">Education</dt>
+          <dd class="text-right font-semibold text-slate-900 dark:text-white">{site.person.affiliation}</dd>
         </div>
-      </div>
+        <div class="flex items-center justify-between gap-4">
+          <dt class="text-slate-600 dark:text-slate-300">Location</dt>
+          <dd class="font-semibold text-slate-900 dark:text-white">{site.person.location}</dd>
+        </div>
+      </dl>
+    </div>
 
-      <div class="surface rounded-3xl p-6">
-        <div class="flex items-center gap-4">
-          <img
-            src={site.assets.logo}
-            alt={`${site.company.name} logo`}
-            class="h-14 w-auto rounded-2xl bg-white/50 p-3 shadow-sm backdrop-blur dark:bg-white/5"
-            loading="eager"
-            decoding="async"
-          />
-          <div>
-            <h2 class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">{site.company.name}</h2>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">{site.company.tagline}</p>
-          </div>
-        </div>
-        <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-          This is where I handle client work. If you’re a business or a team, start here and check the case studies.
-        </p>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="/company"
-            class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
-          >
-            Company page
-          </a>
-          <a
-            href="/case-studies"
-            class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
-          >
-            View case studies
-          </a>
-        </div>
+    <div class="surface rounded-3xl p-6 md:col-span-2">
+      <div class="flex items-end justify-between gap-6">
+        <div class="text-sm font-semibold text-slate-900 dark:text-white">Skills</div>
+        <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/about">
+          More →
+        </a>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {site.person.skills.map((s) => (
+          <span class="surface rounded-full px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">{s}</span>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="mt-16">
     <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Services</h2>
-        <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-          Executive-friendly engagement with hands-on delivery — built for measurable impact.
-        </p>
-      </div>
-      <a class="hidden text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300 sm:inline" href="/contact">
-        Start a conversation →
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Gallery</h2>
+      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/projects">
+        View projects →
       </a>
     </div>
 
-    <div class="mt-6 grid gap-4 md:grid-cols-3">
-      {site.services.map((s) => (
-        <div
-          class="surface rounded-3xl p-6"
-        >
-          <div class="flex items-center gap-3">
-            <div class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-glow">
-              {
-                s.icon === "product" ? (
-                  <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 0 1-5.65-13.65A7.95 7.95 0 0 1 12 4a8 8 0 0 1 0 16Zm4.24-12.24-2.83 2.83a3 3 0 1 0 1.41 1.41l2.83-2.83Z"
-                    />
-                  </svg>
-                ) : s.icon === "leadership" ? (
-                  <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 8 11Zm0 2c-3.31 0-6 1.79-6 4v1h10.1a6.6 6.6 0 0 1-.1-1c0-1.53.6-2.91 1.58-4Zm8 0a5 5 0 0 0-5 5v1h12v-1a5 5 0 0 0-5-5Z"
-                    />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M9.4 16.6 5.8 13l3.6-3.6L8 8l-5 5 5 5Zm5.2 0L18.2 13l-3.6-3.6L16 8l5 5-5 5ZM14 4h-4l-2 16h4Z"
-                    />
-                  </svg>
-                )
-              }
-            </div>
-            <h3 class="text-base font-semibold text-slate-900 dark:text-white">{s.title}</h3>
-          </div>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{s.description}</p>
-          <ul class="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-            {s.bullets.map((b) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {gallery.map((src) => (
+        <div class="surface group relative overflow-hidden rounded-3xl border border-slate-200/70 dark:border-white/10">
+          <img
+            src={src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
         </div>
       ))}
     </div>
@@ -287,7 +207,7 @@ const projects = (await getCollection("projects"))
       <div>
         <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Featured projects</h2>
         <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-          Recent builds across automation, product, and business systems.
+          A few recent things I’ve built (and what I learned from them).
         </p>
       </div>
       <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/projects">
@@ -337,83 +257,6 @@ const projects = (await getCollection("projects"))
     </div>
   </section>
 
-  <section class="mt-16">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Featured case studies</h2>
-        <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-          A few examples of work focused on reliability, speed, and business outcomes.
-        </p>
-      </div>
-      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/case-studies">
-        View all →
-      </a>
-    </div>
-
-    <div class="mt-6 grid gap-4 md:grid-cols-2">
-      {caseStudies.map((c) => (
-        <a
-          href={`/case-studies/${c.id}`}
-          class="surface group rounded-3xl p-6 card-hover"
-        >
-          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
-            <span class="surface rounded-full px-3 py-1">
-              {c.data.industry}
-            </span>
-            <span class="surface rounded-full px-3 py-1">
-              {new Date(c.data.publishedAt).toLocaleDateString()}
-            </span>
-          </div>
-          <h3 class="mt-3 text-lg font-semibold text-slate-900 group-hover:underline dark:text-white">{c.data.title}</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{c.data.summary}</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {c.data.metrics.slice(0, 2).map((m) => (
-              <span class="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-800 dark:bg-white/5 dark:text-brand-200">
-                {m}
-              </span>
-            ))}
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="mt-16">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Insights</h2>
-        <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-          Notes on leadership, architecture, delivery systems, and building durable products.
-        </p>
-      </div>
-      <a class="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-300" href="/insights">
-        View all →
-      </a>
-    </div>
-
-    <div class="mt-6 grid gap-4 md:grid-cols-2">
-      {insights.map((p) => (
-        <a
-          href={`/insights/${p.id}`}
-          class="surface group rounded-3xl p-6 card-hover"
-        >
-          <div class="text-xs font-semibold text-slate-600 dark:text-slate-300">
-            {new Date(p.data.publishedAt).toLocaleDateString()}
-          </div>
-          <h3 class="mt-3 text-lg font-semibold text-slate-900 group-hover:underline dark:text-white">{p.data.title}</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{p.data.summary}</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            {p.data.tags.slice(0, 3).map((t) => (
-              <span class="surface rounded-full px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
-                {t}
-              </span>
-            ))}
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
   {
     site.testimonials.length ? (
       <section class="mt-16">
@@ -434,23 +277,23 @@ const projects = (await getCollection("projects"))
       <section class="mt-16">
         <div class="surface rounded-3xl p-8">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
-            References available on request
+            Want to work together?
           </h2>
           <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-            I’m happy to share relevant references after a brief intro call, aligned to your industry and goals.
+            If you have a website idea or a small app you want to ship, send me a message.
           </p>
           <div class="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
               href="/contact"
               class="animate-shimmer inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
             >
-              Request references
+              Contact
             </a>
             <a
-              href="/case-studies"
+              href="/projects"
               class="surface inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/80 dark:text-slate-100 dark:hover:bg-slate-950/60"
             >
-              Review case studies
+              View projects
             </a>
           </div>
         </div>
@@ -460,9 +303,9 @@ const projects = (await getCollection("projects"))
 
   <section class="mt-16">
     <div class="rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-glow">
-      <h2 class="text-2xl font-semibold tracking-tight text-white">Let’s build something that lasts</h2>
+      <h2 class="text-2xl font-semibold tracking-tight text-white">Let’s build something simple and solid</h2>
       <p class="mt-2 max-w-2xl text-sm text-slate-300">
-        If you’re looking for a partner who can operate at CEO-level clarity and still ship, let’s talk.
+        I’m happy to help with a portfolio, landing page, or a small web project.
       </p>
       <div class="mt-6 flex flex-col gap-3 sm:flex-row">
         <a
@@ -472,10 +315,10 @@ const projects = (await getCollection("projects"))
           Contact
         </a>
         <a
-          href="/case-studies"
+          href="/projects"
           class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
         >
-          Review results
+          View projects
         </a>
       </div>
     </div>

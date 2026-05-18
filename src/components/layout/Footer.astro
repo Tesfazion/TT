@@ -22,9 +22,9 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
       <div class="pointer-events-none absolute -bottom-12 -left-10 h-56 w-56 rounded-full bg-emerald-400/10 blur-3xl"></div>
       <div class="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <div class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Let’s build something great</div>
+          <div class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Got an idea?</div>
           <p class="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-            Need a modern website, a dashboard, or a full-stack app? Tell me what you’re building and I’ll reply with next steps.
+            If you need a portfolio, landing page, or help with a small web project, send me a message and I’ll get back when I can.
           </p>
         </div>
         <div class="flex flex-col gap-3 sm:flex-row">
@@ -55,14 +55,12 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
             decoding="async"
           />
           <div>
-            <div class="text-sm font-semibold text-slate-900 dark:text-slate-100">{site.company.name}</div>
-            <div class="mt-0.5 text-xs font-medium text-slate-600 dark:text-slate-300">{site.company.tagline}</div>
+            <div class="text-sm font-semibold text-slate-900 dark:text-slate-100">{site.person.name}</div>
+            <div class="mt-0.5 text-xs font-medium text-slate-600 dark:text-slate-300">
+              {site.person.role} • {site.person.affiliation}
+            </div>
+            <div class="mt-0.5 text-xs font-medium text-slate-600 dark:text-slate-300">{site.person.location}</div>
           </div>
-        </div>
-
-        <div class="mt-4 text-sm text-slate-600 dark:text-slate-300">
-          <div class="font-semibold text-slate-900 dark:text-slate-100">{site.person.name}</div>
-          <div class="mt-1">{site.person.role} • {site.person.location}</div>
         </div>
 
         <div class="mt-5 flex flex-wrap gap-2">
@@ -110,8 +108,8 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
         <div class="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
           <a class="hover:underline" href="/">Home</a>
           <a class="hover:underline" href="/about">About</a>
-          <a class="hover:underline" href="/projects">Projects</a>
           <a class="hover:underline" href="/company">Company</a>
+          <a class="hover:underline" href="/projects">Projects</a>
           <a class="hover:underline" href="/contact">Contact</a>
         </div>
       </div>
@@ -131,7 +129,7 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
             companyEmail ? (
               <a class="inline-flex items-center gap-2 text-slate-700 hover:underline dark:text-slate-200" href={`mailto:${companyEmail}`}>
                 <Icon name="mail" class="h-4 w-4" />
-                <span>Studio: {companyEmail}</span>
+                <span>Work: {companyEmail}</span>
               </a>
             ) : null
           }
@@ -148,11 +146,10 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
     </div>
 
     <div class="mt-10 flex flex-col gap-3 border-t border-slate-200/60 pt-6 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-      <div>© {year} {site.company.name}. All rights reserved.</div>
+      <div>© {year} {site.person.name}. All rights reserved.</div>
       <div class="flex items-center gap-3">
         <a class="hover:underline" href="/privacy">Privacy</a>
       </div>
     </div>
   </div>
 </footer>
-

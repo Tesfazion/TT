@@ -31,10 +31,42 @@ import { site } from "../config/site";
 
   <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
     <div class="lg:col-span-6">
-      <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-white">What it is</h2>
+      <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-white">About</h2>
       <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        {site.company.name} is the umbrella I use for client work. My personal portfolio is about me; this page is about the studio and the services I offer for teams and businesses.
+        {site.company.name} is a technology company focused on modern web experiences and practical software solutions.
+        We help businesses, brands, and organizations plan, build, and improve websites, dashboards, and lightweight web tools.
       </p>
+      <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        Our style is simple: clear communication, clean design, and solutions that are easy to maintain.
+        Whether you’re starting from scratch or improving an existing site, we aim for speed, reliability, and a polished finish.
+      </p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="surface rounded-3xl p-5 card-hover">
+          <div class="text-sm font-semibold text-slate-900 dark:text-white">Modern websites</div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Business sites, landing pages, portfolios, and marketing pages that load fast and look great on any device.
+          </p>
+        </div>
+        <div class="surface rounded-3xl p-5 card-hover">
+          <div class="text-sm font-semibold text-slate-900 dark:text-white">Web apps & dashboards</div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Internal tools, admin panels, and small dashboards that help teams track work and make decisions.
+          </p>
+        </div>
+        <div class="surface rounded-3xl p-5 card-hover">
+          <div class="text-sm font-semibold text-slate-900 dark:text-white">Automation & integrations</div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Connect forms, messaging, and reporting so requests move to the right place automatically.
+          </p>
+        </div>
+        <div class="surface rounded-3xl p-5 card-hover">
+          <div class="text-sm font-semibold text-slate-900 dark:text-white">Support & improvements</div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Updates, fixes, performance tuning, and ongoing help so your site stays healthy after launch.
+          </p>
+        </div>
+      </div>
 
       <div class="surface mt-6 rounded-3xl p-6">
         <div class="text-sm font-semibold text-slate-900 dark:text-white">Services</div>
@@ -43,6 +75,13 @@ import { site } from "../config/site";
             <div class="surface rounded-2xl p-4">
               <div class="text-sm font-semibold text-slate-900 dark:text-white">{s.title}</div>
               <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{s.description}</p>
+              {s.bullets?.length ? (
+                <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-600 marker:text-brand-600 dark:text-slate-300 dark:marker:text-brand-400">
+                  {s.bullets.map((b) => (
+                    <li>{b}</li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>
@@ -53,7 +92,7 @@ import { site } from "../config/site";
       <div class="rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-glow">
         <h2 class="text-xl font-semibold tracking-tight text-white">Work with {site.company.name}</h2>
         <p class="mt-2 text-sm text-slate-300">
-          Share your goals, timeline, and budget. I’ll reply with a simple plan and next steps.
+          Share what you want to build, your timeline, and any references you like. We’ll reply with a clear plan and the next step.
         </p>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
           <a
@@ -63,10 +102,10 @@ import { site } from "../config/site";
             Contact
           </a>
           <a
-            href="/case-studies"
+            href="/projects"
             class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
-            See case studies
+            See projects
           </a>
         </div>
 
@@ -74,6 +113,36 @@ import { site } from "../config/site";
           {site.trust.map((t) => (
             <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">{t}</span>
           ))}
+        </div>
+
+        <div class="mt-8">
+          <div class="text-sm font-semibold text-white">How we work</div>
+          <ol class="mt-4 space-y-3 text-sm text-slate-300">
+            <li class="flex gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">
+                1
+              </span>
+              <span>
+                <span class="font-semibold text-white">Discovery</span> — a short call to understand goals, audience, and what “success” looks like.
+              </span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">
+                2
+              </span>
+              <span>
+                <span class="font-semibold text-white">Build</span> — clean UI, responsive layout, and clear content structure (with regular updates).
+              </span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">
+                3
+              </span>
+              <span>
+                <span class="font-semibold text-white">Launch & support</span> — ship, monitor, and iterate. We can also handle ongoing improvements.
+              </span>
+            </li>
+          </ol>
         </div>
       </div>
     </div>

@@ -7,6 +7,20 @@ const companyEmail = site.contact.companyEmail?.trim();
 const personalEmail = site.contact.personalEmail?.trim();
 const primaryEmail = personalEmail || companyEmail;
 const whatsappNumber = site.contact.whatsappE164.replace("+", "");
+
+const emailSubject = encodeURIComponent("Hello Tesfatseyon — from your portfolio site");
+const emailBody = encodeURIComponent(
+  [
+    "Hi Tesfatseyon,",
+    "",
+    "My name: ",
+    "I’m reaching out about: ",
+    "Timeline: ",
+    "Budget (optional): ",
+    "",
+    "Message:"
+  ].join("\n")
+);
 ---
 
 <Layout title="Contact" description="Contact me for freelance work, jobs, or collaboration.">
@@ -22,7 +36,7 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
     <div class="relative flex flex-col gap-2">
       <h1 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">Contact</h1>
       <p class="max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        Want to hire me, collaborate, or ask a question? Here are the best ways to reach me. For studio/client work, you can also use the company email.
+        Want to collaborate, ask a question, or talk about a project? Here are the easiest ways to reach me. If it’s work related, feel free to use the studio email.
       </p>
     </div>
   </section>
@@ -153,11 +167,7 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
     <div class="lg:col-span-7">
       {
         primaryEmail ? (
-          <form
-            data-contact-form
-            data-to={primaryEmail}
-            class="surface relative overflow-hidden rounded-3xl p-6"
-          >
+          <section class="surface relative overflow-hidden rounded-3xl p-6">
             <img
               src="/images/tech/hex.svg"
               alt=""
@@ -168,53 +178,40 @@ const whatsappNumber = site.contact.whatsappE164.replace("+", "");
             <div class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-500/10 blur-2xl"></div>
             <div class="pointer-events-none absolute -bottom-12 -left-10 h-48 w-48 rounded-full bg-emerald-400/10 blur-2xl"></div>
             <div class="relative">
-            <div class="grid gap-4 sm:grid-cols-2">
-              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
-                Name
-                <input
-                  name="name"
-                  required
-                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
-                  placeholder="Your name"
-                />
-              </label>
-              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
-                Email
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
-                  placeholder="you@company.com"
-                />
-              </label>
-              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 sm:col-span-2">
-                Company (optional)
-                <input
-                  name="company"
-                  class="focus-ring h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
-                  placeholder="Company / org"
-                />
-              </label>
-              <label class="grid gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 sm:col-span-2">
-                Message
-                <textarea
-                  name="message"
-                  required
-                  rows="6"
-                  class="focus-ring resize-y rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-100"
-                  placeholder="What are you building? What outcomes do you need? Timeline? Constraints?"
-                ></textarea>
-              </label>
-            </div>
+              <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-white">Send a quick message</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                I keep this site fully static, so the “form” is just a clean email template. Click once and your email app will open.
+              </p>
 
-            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button class="focus-ring inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700">
-                Send message
-              </button>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <a
+                  class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-glow hover:bg-brand-700"
+                  href={`mailto:${primaryEmail}?subject=${emailSubject}&body=${emailBody}`}
+                >
+                  <Icon name="mail" class="h-4 w-4" />
+                  Email me
+                </a>
+                <a
+                  class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon name="whatsapp" class="h-4 w-4" />
+                  WhatsApp
+                </a>
+              </div>
+
+              <div class="mt-6 surface rounded-2xl p-5">
+                <div class="text-sm font-semibold text-slate-900 dark:text-white">What to include</div>
+                <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700 marker:text-brand-600 dark:text-slate-200 dark:marker:text-brand-400">
+                  <li>What you want to build (a website, portfolio, app, dashboard…)</li>
+                  <li>Your timeline (even a rough estimate is fine)</li>
+                  <li>Any links or screenshots you already have</li>
+                </ul>
+              </div>
             </div>
-            </div>
-          </form>
+          </section>
         ) : (
           <div class="rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-glow">
             <h2 class="text-2xl font-semibold tracking-tight text-white">Fastest way to reach me</h2>

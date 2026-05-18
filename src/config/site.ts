@@ -4,25 +4,29 @@ export type Testimonial = { quote: string; name: string; title: string };
 export const site = {
   person: {
     name: "Tesfatseyon Merkineh",
-    role: "Founder & CEO",
-    headline: "I build modern websites and full-stack apps.",
+    role: "Computer Science Student",
+    affiliation: "Dilla University",
+    age: 23,
+    education: "CS Student at Dilla University in Ethiopia",
+    headline: "I build clean, fast websites — and I’m always learning.",
     subheadline:
-      "Software development end-to-end: modern UI, full-stack apps, dashboards, APIs, and automations — with clear delivery and founder-level ownership.",
+      "I’m a Computer Science student at Dilla University (Ethiopia). I like building simple, responsive websites and small web tools with Astro, TypeScript, and Tailwind.",
     skills: [
-      "Software development",
-      "Full-stack apps",
-      "Dashboards",
-      "UI/UX design",
-      "API development",
-      "Automation & integrations"
+      "HTML & CSS",
+      "JavaScript / TypeScript",
+      "Astro",
+      "Tailwind CSS",
+      "Node.js (basics)",
+      "Git & GitHub",
+      "REST APIs (basics)"
     ],
-    location: "Addis Ababa, Ethiopia",
-    availability: "Open to freelance • Full-time • Speaking"
+    location: "Dilla, Ethiopia",
+    availability: "Open for internships • small freelance work"
   },
   company: {
     name: "Ethio-Sunshine Tech Solution",
     navLabel: "Ethio-sunshine",
-    tagline: "Client work, consulting, and delivery — under one studio."
+    tagline: "Web & software solutions for businesses and organizations."
   },
   contact: {
     companyEmail: "sunshinetechsolution4@gmail.com",
@@ -48,50 +52,92 @@ export const site = {
   nav: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Projects", href: "/projects" },
     { label: "Company", href: "/company" },
-    { label: "Case Studies", href: "/case-studies" },
-    { label: "Insights", href: "/insights" },
+    { label: "Projects", href: "/projects" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   seo: {
     siteUrl: "https://tesfazion.github.io",
-    title: "Tesfatseyon Merkineh — Portfolio",
+    title: "Tesfatseyon Merkineh — CS Student & Web Builder",
     description:
-      "Personal portfolio of Tesfatseyon Merkineh — full-stack developer building modern web experiences and reliable systems."
+      "Computer Science student at Dilla University (Ethiopia). I build clean, responsive websites and small web apps with Astro, TypeScript, and Tailwind."
   },
   analytics: {
     plausibleDomain: ""
   },
+  certifications: [
+    {
+      title: "Modern Web Development",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2026",
+      image: "/images/certifications/modern-web.svg",
+      bullets: ["Astro + TypeScript", "Tailwind CSS", "Accessibility + performance"]
+    },
+    {
+      title: "System Design & Architecture",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2026",
+      image: "/images/certifications/system-design.svg",
+      bullets: ["API design", "Scalability patterns", "Modernization approaches"]
+    },
+    {
+      title: "Product Strategy Fundamentals",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2025",
+      image: "/images/certifications/product-strategy.svg",
+      bullets: ["Discovery & framing", "Outcome roadmaps", "Stakeholder alignment"]
+    },
+    {
+      title: "Delivery Systems & Execution",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2026",
+      image: "/images/certifications/delivery-systems.svg",
+      bullets: ["Planning & estimation", "Quality gates & CI", "Release coordination"]
+    },
+    {
+      title: "Executive Communication & Alignment",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2026",
+      image: "/images/certifications/executive-communication.svg",
+      bullets: ["Decision-ready updates", "Stakeholder alignment", "Trade-offs & risk"]
+    },
+    {
+      title: "Security & Risk Basics",
+      issuer: "Tesfatseyon Merkineh",
+      year: "2025",
+      image: "/images/certifications/security-risk.svg",
+      bullets: ["OWASP awareness", "Threat modeling basics", "Secure delivery habits"]
+    }
+  ],
   services: [
     {
       icon: "product",
-      title: "Web Development",
+      title: "Frontend Web Development",
       description:
-        "Fast, responsive websites and web apps with clean UI, solid foundations, and performance in mind.",
-      bullets: ["Landing pages & portfolios", "Web apps & dashboards", "Performance & accessibility"]
-    },
-    {
-      icon: "leadership",
-      title: "UI/UX + Frontend",
-      description:
-        "Modern, user-friendly interfaces built with a strong focus on clarity, layout, and mobile-first design.",
-      bullets: ["Responsive design", "Design systems", "Animations & micro-interactions"]
+        "Landing pages, portfolios, and responsive UI — focused on speed and a clean look.",
+      bullets: ["Astro + Tailwind", "Responsive layouts", "Basic accessibility"]
     },
     {
       icon: "solutions",
-      title: "Automation & Integration",
+      title: "Backend & APIs (Basics)",
       description:
-        "Automations, integrations, and APIs to save time and connect tools cleanly.",
-      bullets: ["API integrations", "Workflow automations", "Security basics"]
+        "Simple Node.js APIs for learning projects and prototypes.",
+      bullets: ["Node.js", "REST basics", "Auth concepts"]
+    },
+    {
+      icon: "leadership",
+      title: "Problem Solving",
+      description:
+        "I enjoy debugging and turning messy problems into clear steps.",
+      bullets: ["Debugging", "Clean code habits", "CS fundamentals"]
     }
   ],
   highlights: [
-    { label: "Focus", value: "Full-stack" },
-    { label: "Strength", value: "UI + APIs" },
-    { label: "Timezone", value: "EAT (UTC+3)" },
-    { label: "Mode", value: "Remote / On-site" }
+    { label: "Age", value: "23" },
+    { label: "University", value: "Dilla University" },
+    { label: "Focus", value: "Frontend + Full-stack" },
+    { label: "Timezone", value: "EAT (UTC+3)" }
   ],
-  trust: ["Startups", "Small businesses", "Teams", "Individuals"],
+  trust: ["Startups", "Small businesses", "Organizations", "Teams"],
   testimonials: [] as Testimonial[]
 } as const;
